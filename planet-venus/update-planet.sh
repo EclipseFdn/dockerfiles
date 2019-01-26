@@ -29,5 +29,5 @@ while true; do
     cp -rf "theme/authors" "${WWW}"
   fi
 
-  sleep 5
+  sleep 1200
 done
