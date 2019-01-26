@@ -11,11 +11,11 @@ LABEL maintainer="Christopher Guindon <chris.guindon@eclipse-foundation.org>"
 
 # Install requirements
 RUN apt-get update && apt-get install -y \
-  planet-venus \
-  xsltproc \
-  vim \
   cron \
   git \
+  planet-venus \
+  vim \
+  xsltproc \
   --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -26,11 +26,11 @@ RUN chgrp 0 /etc/passwd && chmod g=rw /etc/passwd && \
   chgrp 0 /usr/local/bin/update-planet.sh && chmod ug=rx /usr/local/bin/update-planet.sh && \
   chmod -R g+w /usr/share/planet-venus/
 
-# we expect a git repo to be cloned in /var/planet-repo, and it should have a planet subfolder
+# we expect a git repo to be cloned in /var/planet/config, and it should have a planet subfolder
 # with a planet.ini file that will be used to generate the blog.
-VOLUME [ "/var/www", "/var/planet-repo" ]
+VOLUME [ "/var/planet/www", "/var/planet/cache", "/var/planet/config" ]
 
 USER 10001:0
 
 ENTRYPOINT [ "uid_entrypoint" ]
-CMD [ "update-planet.sh", "/var/planet-repo/planet", "/var/www" ]
+CMD [ "update-planet.sh", "/var/planet/config/planet", "/var/planet/www" ]
