@@ -28,6 +28,9 @@ while true; do
   if [[ -d "theme/authors" ]]; then 
     cp -rf "theme/authors" "${WWW}"
   fi
+  if [[ -d "theme/images" ]]; then 
+    cp -rf "theme/images" "${WWW}"
+  fi
 
   sleep 1200
 done
