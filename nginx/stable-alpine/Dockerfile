@@ -19,6 +19,7 @@ COPY "uid_entrypoint" /usr/local/bin/
 RUN chmod g=rwx /var/run /var/log/nginx  && \
   find /etc/nginx -type d -exec chmod g=rwx {} \; && \
   find /etc/nginx -type f -exec chmod g=rw {} \; && \
+  chgrp 0 /usr/share/nginx/html && chmod g=rwxs /usr/share/nginx/html && \
   chgrp 0 /var/cache/nginx && chmod g=rwxs /var/cache/nginx && \
   chgrp 0 /etc/passwd && chmod g=rw /etc/passwd && \
   chgrp 0 /usr/local/bin/uid_entrypoint && chmod ug=rx /usr/local/bin/uid_entrypoint
