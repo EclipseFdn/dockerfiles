@@ -24,6 +24,9 @@ RUN chmod g=rwx /var/run /var/log/nginx  && \
   chgrp 0 /etc/passwd && chmod g=rw /etc/passwd && \
   chgrp 0 /usr/local/bin/uid_entrypoint && chmod ug=rx /usr/local/bin/uid_entrypoint
 
+RUN awk '/server_name/ { print; print "    port_in_redirect off;"; next }1' /etc/nginx/conf.d/default.conf > /tmp/default.conf && \
+  mv /tmp/default.conf /etc/nginx/conf.d/default.conf
+
 # Define arbitrary user id to run this image. Part of the root group as all users on OpenShift
 USER 10001:0
 
