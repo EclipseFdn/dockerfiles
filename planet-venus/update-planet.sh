@@ -13,24 +13,11 @@ set -o pipefail
 
 IFS=$'\n\t'
 
-PLANET="${1:-}"
-WWW="${2:-}"
-BRANCH_NAME="${3:-master}"
+PLANET_FOLDER="${1:-.}"
+REFRESH_FREQUENCY_SECONDS="${REFRESH_FREQUENCY_SECONDS:-1200}"
 
-cd "${PLANET}"
+cd "${PLANET_FOLDER}"
 while true; do
-  git fetch origin
-  git reset --hard origin/${BRANCH_NAME} 
   planet planet.ini
-  if [[ -d "theme/css" ]]; then
-    cp -rf "theme/css" "${WWW}"
-  fi
-  if [[ -d "theme/authors" ]]; then 
-    cp -rf "theme/authors" "${WWW}"
-  fi
-  if [[ -d "theme/images" ]]; then 
-    cp -rf "theme/images" "${WWW}"
-  fi
-
-  sleep 1200
+  sleep "${REFRESH_FREQUENCY_SECONDS}"
 done

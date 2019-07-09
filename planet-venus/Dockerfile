@@ -5,32 +5,33 @@
 # which is available at http://www.eclipse.org/legal/epl-v20.html
 # SPDX-License-Identifier: EPL-2.0
 #*******************************************************************************
-FROM debian:jessie-slim
+FROM debian:buster-slim
 
-LABEL maintainer="Christopher Guindon <chris.guindon@eclipse-foundation.org>"
+ARG REFRESH_FREQUENCY_SECONDS=1200
+ENV REFRESH_FREQUENCY_SECONDS $REFRESH_FREQUENCY_SECONDS
 
 # Install requirements
-RUN apt-get update && apt-get install -y \
-  cron \
-  git \
-  planet-venus \
-  vim \
-  xsltproc \
-  --no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+  && apt-get install --no-install-recommends -y \
+    planet-venus \
+    xsltproc \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 COPY uid_entrypoint /usr/local/bin
 COPY update-planet.sh /usr/local/bin
 RUN chgrp 0 /etc/passwd && chmod g=rw /etc/passwd && \
   chgrp 0 /usr/local/bin/uid_entrypoint && chmod ug=rx /usr/local/bin/uid_entrypoint && \
   chgrp 0 /usr/local/bin/update-planet.sh && chmod ug=rx /usr/local/bin/update-planet.sh && \
-  chmod -R g+w /usr/share/planet-venus/
+  chmod -R g+w /usr/share/planet-venus/ && \
+  mkdir -p /var/planet/cache && chmod -R g+w /var/planet/cache && \
+  mkdir -p /var/planet/www && chmod -R g+w /var/planet/www && \
+  mkdir -p /var/planet/theme && chmod -R g+w /var/planet/theme
 
-# we expect a git repo to be cloned in /var/planet/config, and it should have a planet subfolder
-# with a planet.ini file that will be used to generate the blog.
-VOLUME [ "/var/planet/www", "/var/planet/cache", "/var/planet/config" ]
+# This volume needs to be mounted inside a HTTP server container as the document root
+VOLUME [ "/var/planet/www" ]
 
 USER 10001:0
 
 ENTRYPOINT [ "uid_entrypoint" ]
-CMD [ "update-planet.sh", "/var/planet/config/planet", "/var/planet/www" ]
+CMD [ "update-planet.sh", "/var/planet" ]
