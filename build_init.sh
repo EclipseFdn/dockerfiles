@@ -17,7 +17,10 @@ REPO_NAME="${REPO_NAME:-eclipsefdn}"
 DOCKERTOOLS_PATH="${DOCKERTOOLS_PATH:-"${SCRIPT_FOLDER}/.dockertools"}"
 
 build() {
-  "${DOCKERTOOLS_PATH}/dockerw" build_and_push "${REPO_NAME}/${1}" "${2}" "${1}/${2}/Dockerfile"
+  "${DOCKERTOOLS_PATH}/dockerw" build "${REPO_NAME}/${1}" "${2}" "${1}/${2}/Dockerfile"
+  if [[ "${BRANCH_NAME:-none}" = "master" ]]; then
+    "${DOCKERTOOLS_PATH}/dockerw" push_if_changed "${REPO_NAME}/${1}" "${2}" "${1}/${2}/Dockerfile"
+  fi
   if [[ "${3:-}" = "latest" ]]; then
     tag_latest "${1}" "${2}"
   fi
@@ -27,7 +30,9 @@ tag_latest() {
   local f=$1
   local t=$2
   "${DOCKERTOOLS_PATH}/dockerw" tag_alias "${REPO_NAME}/${f}" "${t}" "latest"
-  "${DOCKERTOOLS_PATH}/dockerw" push_if_changed "${REPO_NAME}/${f}" "latest" "${1}/${2}/Dockerfile"
+  if [[ "${BRANCH_NAME:-none}" = "master" ]]; then
+    "${DOCKERTOOLS_PATH}/dockerw" push_if_changed "${REPO_NAME}/${f}" "latest" "${1}/${2}/Dockerfile"
+  fi
 }
 
 if [[ -d "${DOCKERTOOLS_PATH}" ]]; then
