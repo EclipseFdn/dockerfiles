@@ -5,6 +5,13 @@
 # which is available at http://www.eclipse.org/legal/epl-v20.html
 # SPDX-License-Identifier: EPL-2.0
 #*******************************************************************************
+FROM alpine:3.10 AS htpasswdbuilder
+
+RUN apk --no-cache add \
+  apache2-utils
+
+RUN htpasswd -cbm /tmp/htpasswd testuser plaintext
+
 FROM nginx:stable-alpine
 
 # overwrite default config from parent image
@@ -16,7 +23,7 @@ COPY "uid_entrypoint" /usr/local/bin/
 
 # change permissions of several files and folders so that member of the root group (gid=0)
 # have write permissions to these resources
-RUN chmod g=rwx /var/run /var/log/nginx  && \
+RUN chmod g=rwx /var/run /var/log/nginx && \
   find /etc/nginx -type d -exec chmod g=rwx {} \; && \
   find /etc/nginx -type f -exec chmod g=rw {} \; && \
   chgrp -R 0 /usr/share/nginx/html && chmod -R g=rwxs /usr/share/nginx/html && \
@@ -24,8 +31,13 @@ RUN chmod g=rwx /var/run /var/log/nginx  && \
   chgrp 0 /etc/passwd && chmod g=rw /etc/passwd && \
   chgrp 0 /usr/local/bin/uid_entrypoint && chmod ug=rx /usr/local/bin/uid_entrypoint
 
+COPY --from=htpasswdbuilder /tmp/htpasswd /etc/nginx/.htpasswd
+
 RUN awk '/server_name/ { print; print "    port_in_redirect off;"; next }1' /etc/nginx/conf.d/default.conf > /tmp/default.conf && \
-  mv /tmp/default.conf /etc/nginx/conf.d/default.conf
+  mv /tmp/default.conf /etc/nginx/conf.d/default.conf && \
+  awk '/location \// { print; print "        auth_basic \"Staging Site\";"; print "        auth_basic_user_file /etc/nginx/.htpasswd;"; next }1' /etc/nginx/conf.d/default.conf > /tmp/default.conf && \
+  mv /tmp/default.conf /etc/nginx/conf.d/default.conf 
+
 
 # Define arbitrary user id to run this image. Part of the root group as all users on OpenShift
 USER 10001:0

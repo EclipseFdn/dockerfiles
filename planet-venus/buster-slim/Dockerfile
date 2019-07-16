@@ -20,18 +20,9 @@ RUN apt-get update \
 
 COPY uid_entrypoint /usr/local/bin
 COPY update-planet.sh /usr/local/bin
-RUN chgrp 0 /etc/passwd && chmod g=rw /etc/passwd && \
-  chgrp 0 /usr/local/bin/uid_entrypoint && chmod ug=rx /usr/local/bin/uid_entrypoint && \
-  chgrp 0 /usr/local/bin/update-planet.sh && chmod ug=rx /usr/local/bin/update-planet.sh && \
-  chmod -R g+w /usr/share/planet-venus/ && \
-  mkdir -p /var/planet/cache && chmod -R g+w /var/planet/cache && \
-  mkdir -p /var/planet/www && chmod -R g+w /var/planet/www && \
-  mkdir -p /var/planet/theme && chmod -R g+w /var/planet/theme
-
-# This volume needs to be mounted inside a HTTP server container as the document root
-VOLUME [ "/var/planet/www" ]
-
-USER 10001:0
+RUN chgrp 0 /etc/passwd && chmod g=rw /etc/passwd \
+  && chgrp 0 /usr/local/bin/uid_entrypoint && chmod ug=rx /usr/local/bin/uid_entrypoint \
+  && chgrp 0 /usr/local/bin/update-planet.sh && chmod g=rx /usr/local/bin/update-planet.sh \
+  && chgrp -R 0 /usr/share/planet-venus/theme && chmod -R g+w /usr/share/planet-venus/theme
 
 ENTRYPOINT [ "uid_entrypoint" ]
-CMD [ "update-planet.sh", "/var/planet" ]

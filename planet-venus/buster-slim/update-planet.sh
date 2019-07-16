@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env sh
 #*******************************************************************************
 # Copyright (c) 2019 Eclipse Foundation and others.
 # This program and the accompanying materials are made available
@@ -7,11 +7,15 @@
 # SPDX-License-Identifier: EPL-2.0
 #*******************************************************************************
 
-: "${USERNAME:="default"}"
+set -o errexit
+set -o nounset
+set -o pipefail
 
-if ! whoami &> /dev/null; then
-  if [ -w /etc/passwd ]; then
-    echo "${USERNAME}:x:$(id -u):0:${USERNAME} user:${HOME}:/sbin/nologin" >> /etc/passwd
-  fi
-fi
-exec "$@"
+PLANET_FOLDER="${1:-.}"
+REFRESH_FREQUENCY_SECONDS="${REFRESH_FREQUENCY_SECONDS:-1200}"
+
+cd "${PLANET_FOLDER}"
+while true; do
+  planet planet.ini
+  sleep "${REFRESH_FREQUENCY_SECONDS}"
+done
