@@ -10,14 +10,14 @@ pipeline {
   }
 
   stages {
-    stage('Build nginx') {
+    stage('Build docker images') {
       agent {
         label 'docker-build'
       }
       steps {
         withDockerRegistry([credentialsId: '04264967-fea0-40c2-bf60-09af5aeba60f', url: 'https://index.docker.io/v1/']) {
-          sh '''
-            . build_init.sh
+          sh '''#!/usr/bin/env bash
+            . ./build_init.sh
 
             build nginx stable-alpine latest
             build nginx stable-alpine-for-staging
@@ -31,12 +31,6 @@ pipeline {
 
   post {
     always {
-      agent {
-        label 'docker-build'
-      }
-      sh '''
-      docker logout
-      '''
       deleteDir() /* clean up workspace */
     }
   }
