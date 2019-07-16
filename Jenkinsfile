@@ -31,6 +31,9 @@ pipeline {
 
   post {
     always {
+      agent {
+        label 'docker-build'
+      }
       sh '''
       docker logout
       '''
