@@ -39,7 +39,7 @@ pipeline {
       sendNotifications currentBuild.result
     }
     fixed { // back to normal
-      sendNotifications currentBuild.result
+      sendNotifications 'FIXED'
     }
   }
 }
