@@ -20,3 +20,5 @@ build nginx stable-alpine latest
 build nginx stable-alpine-for-staging
 
 build planet-venus buster-slim latest
+
+build kubectl 1.9-alpine latest
