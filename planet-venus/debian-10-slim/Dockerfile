@@ -5,7 +5,7 @@
 # which is available at http://www.eclipse.org/legal/epl-v20.html
 # SPDX-License-Identifier: EPL-2.0
 #*******************************************************************************
-FROM debian:buster-slim
+FROM debian:10-slim
 
 ARG REFRESH_FREQUENCY_SECONDS=1200
 ENV REFRESH_FREQUENCY_SECONDS $REFRESH_FREQUENCY_SECONDS
