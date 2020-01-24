@@ -23,3 +23,5 @@ build planet-venus debian-10-slim latest
 
 build kubectl 1.9-alpine 
 build kubectl 1.14-alpine latest
+
+build mongo 4.2 latest
