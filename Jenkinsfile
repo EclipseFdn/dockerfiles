@@ -34,12 +34,7 @@ pipeline {
   post {
     always {
       deleteDir() /* clean up workspace */
-    }
-    unsuccessful { // either unstable or failed
-      sendNotifications currentBuild.result
-    }
-    fixed { // back to normal
-      sendNotifications 'FIXED'
+      sendNotifications currentBuild
     }
   }
 }
