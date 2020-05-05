@@ -8,7 +8,7 @@
 FROM nginx:stable-alpine
 
 # overwrite default config from parent image
-RUN sed -i 's/listen\( \+\)80/listen\18080/' /etc/nginx/conf.d/default.conf
+RUN sed -i 's/listen\( \+.*\)80/listen\18080/' /etc/nginx/conf.d/default.conf
 RUN sed -i 's/^ *user .*;$//' /etc/nginx/nginx.conf
 EXPOSE 8080
 
