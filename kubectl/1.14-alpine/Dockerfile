@@ -1,4 +1,4 @@
-FROM alpine:3.10 as downloader
+FROM alpine:3.10 as downloader_1_14
 
 ARG K8S_VERSION=v1.14.9
 
@@ -22,7 +22,7 @@ RUN chgrp 0 /etc/passwd && chmod g=rw /etc/passwd \
 ENV HOME=/home/default
 WORKDIR ${HOME}
 
-COPY --from=downloader kubectl /usr/local/bin/kubectl
+COPY --from=downloader_1_14 kubectl /usr/local/bin/kubectl
 COPY k8s /usr/local/bin
 
 ENTRYPOINT [ "uid_entrypoint" ]
