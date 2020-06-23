@@ -1,1 +1,0 @@
-This Dockerfile is a largely a copy of https://github.com/docker-library/mongo/blob/master/4.2/Dockerfile to "undeclare" VOLUME (they are declared with uid/gid 999:999)
