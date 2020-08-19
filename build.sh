@@ -17,6 +17,7 @@ SCRIPT_FOLDER="$(dirname "$(readlink -f "${0}")")"
 . "${SCRIPT_FOLDER}/build_init.sh"
 
 build nginx stable-alpine latest
+build nginx stable-alpine-for-hugo latest
 build nginx stable-alpine-for-staging
 
 build planet-venus debian-10-slim latest
