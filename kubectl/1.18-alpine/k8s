@@ -1,0 +1,45 @@
+#! /usr/bin/env bash
+#*******************************************************************************
+# Copyright (c) 2019 Eclipse Foundation and others.
+# This program and the accompanying materials are made available
+# under the terms of the Eclipse Public License 2.0
+# which is available at http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
+#*******************************************************************************
+
+getAll() {
+  local resourcetype="${1}"
+  local namespace="${2}"
+  local selector="${3}"
+
+  local resourcefile
+  resourcefile=$(mktemp)
+  kubectl get "${resourcetype}" -n "${namespace}" -l "${selector}" -o json > "${resourcefile}"
+  if [[ $(jq -r '.items | length' "${resourcefile}") -eq 0 ]]; then
+    >&2 echo "DEBUG: There is no ${resourcetype} matching ${selector} in namespace ${namespace}."
+    jq -rn '[]'
+  else
+    jq '.items' "${resourcefile}"
+  fi
+
+  rm -f "${resourcefile}"
+}
+
+getFirst() {
+  local resourcetype="${1}"
+  local namespace="${2}"
+  local selector="${3}" 
+
+  local resource
+  resource=$(getAll "${resourcetype}" "${namespace}" "${selector}")
+  if [[ $(echo "${resource}" | jq -r 'length') -eq 0 ]]; then
+    jq -rn '{}'
+  else
+    if [[ $(echo "${resource}" | jq -r 'length') -gt 1 ]]; then
+      >&2 echo "DEBUG: There are more than 1 ${resourcetype} matching ${selector} in namespace ${namespace}."
+    fi
+    echo "${resource}" | jq '.[0]'
+  fi
+}
+
+${1} "${@:2}"

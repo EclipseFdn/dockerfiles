@@ -23,4 +23,5 @@ build nginx stable-alpine-for-staging
 build planet-venus debian-10-slim latest
 
 build kubectl 1.9-alpine 
-build kubectl 1.14-alpine latest
+build kubectl 1.14-alpine
+build kubectl 1.18-alpine latest
