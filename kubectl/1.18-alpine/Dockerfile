@@ -9,8 +9,8 @@ RUN apk add --no-cache \
 RUN curl -sSLO https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64/kubectl \
   && chmod ug+x kubectl
 
-RUN curl -sSLO https://github.com/google/go-jsonnet/releases/download/v${JSONNET_VERSION}}/go-jsonnet_${JSONNET_VERSION}}_Linux_x86_64.tar.gz \
-  && tar zxf go-jsonnet_${JSONNET_VERSION}}_Linux_x86_64.tar.gz \
+RUN curl -sSLO https://github.com/google/go-jsonnet/releases/download/v${JSONNET_VERSION}/go-jsonnet_${JSONNET_VERSION}_Linux_x86_64.tar.gz \
+  && tar zxf go-jsonnet_${JSONNET_VERSION}_Linux_x86_64.tar.gz \
   && chmod ug+x jsonnet*
 
 FROM alpine
