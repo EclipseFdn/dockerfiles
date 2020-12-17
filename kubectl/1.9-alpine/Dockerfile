@@ -28,6 +28,7 @@ ENV HOME=/home/default
 WORKDIR ${HOME}
 
 COPY --from=downloader kubectl /usr/local/bin/kubectl
+COPY --from=downloader jsonnet /usr/local/bin/jsonnet
 COPY k8s /usr/local/bin
 
 ENTRYPOINT [ "uid_entrypoint" ]
