@@ -1,6 +1,6 @@
-FROM alpine as downloader_1_14
+FROM alpine as tool_downloader
 
-ARG K8S_VERSION=v1.14.10
+ARG K8S_VERSION=v1.19.2
 ARG JSONNET_VERSION=0.17.0
 
 RUN apk add --no-cache \
@@ -22,8 +22,7 @@ RUN apk add --no-cache \
 ENV HOME=/home/default
 WORKDIR ${HOME}
 
-COPY --from=downloader_1_14 kubectl /usr/local/bin/kubectl
-COPY --from=downloader_1_14 jsonnet /usr/local/bin/jsonnet
-COPY k8s /usr/local/bin
+COPY --from=tool_downloader kubectl /usr/local/bin/kubectl
+COPY --from=tool_downloader jsonnet /usr/local/bin/jsonnet
 
 ENTRYPOINT [ "uid_entrypoint" ]
