@@ -22,12 +22,12 @@ build() {
     push="true"
   fi
 
-  local latest="false"
+  local images="${REPO_NAME}/${1}:${2}"
   if [[ "${3:-}" = "latest" ]]; then
-    latest="true"
+    images="${images},${REPO_NAME}/${1}:latest"
   fi
 
-  "${DOCKERTOOLS_PATH}/dockerw" build "${REPO_NAME}/${1}" "${2}" "${1}/${2}/Dockerfile" "${1}/${2}" "${push}" "${latest}"
+  "${DOCKERTOOLS_PATH}/dockerw" build2 "${images}" "${1}/${2}/Dockerfile" "${1}/${2}" "${push}"
 }
 
 if [[ -d "${DOCKERTOOLS_PATH}" ]]; then
