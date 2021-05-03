@@ -1,7 +1,7 @@
 FROM debian:10-slim AS builder
 
-ARG HUGO_VERSION=0.62.2
-ARG NODE_VERSION=10.15.0
+ARG HUGO_VERSION=0.76.5
+ARG NODE_VERSION=12.22.1
 
 RUN apt-get update && apt-get install -y \
     build-essential \
