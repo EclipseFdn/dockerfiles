@@ -1,0 +1,28 @@
+
+#*******************************************************************************
+# Copyright (c) 2021 Eclipse Foundation and others.
+# This program and the accompanying materials are made available
+# under the terms of the Eclipse Public License 2.0
+# which is available at http://www.eclipse.org/legal/epl-v20.html
+# SPDX-License-Identifier: EPL-2.0
+#*******************************************************************************
+
+##
+# Installs required build tools that will be used in the compilation process
+# of fullstack development environments. This includes set and tested minimum
+# versions of node.js, Hugo, and Java.
+##
+FROM alpine:3.13
+
+## Pull in previous release packages for older LTS Nodejs
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositories
+RUN apk add --no-cache \
+    make \
+    "nodejs<13.0.0" \
+    "hugo>0.76.5" \
+    openjdk11-jdk \
+    maven \
+    yarn
+
+USER 10001:0
+
