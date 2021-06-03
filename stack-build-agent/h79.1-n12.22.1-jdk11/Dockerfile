@@ -15,8 +15,8 @@
 FROM alpine:3.13
 
 ## Pull in previous release packages for older LTS Nodejs
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositories
-RUN apk add --no-cache \
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositories \
+    && apk add --no-cache \
     make \
     "nodejs<13.0.0" \
     "hugo>0.76.5" \
