@@ -24,5 +24,8 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositor
     maven \
     yarn
 
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+ENV PATH=$PATH:/usr/lib/jvm/java-11-openjdk/bin
+
 USER 10001:0
 
