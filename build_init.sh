@@ -15,22 +15,14 @@ set -o pipefail
 REPO_NAME="${REPO_NAME:-docker.io/eclipsefdn}"
 
 build() {
-  local output="type=image"
-  local cacheTo=""
-  local cacheFrom="--cache-from=type=registry,ref=${REPO_NAME}/${1}:${2}"
-
-  local images="${REPO_NAME}/${1}:${2}"
-  if [[ "${3:-}" == "latest" ]]; then
-    images="${images},${REPO_NAME}/${1}:latest"
-  fi
-  output="${output},\"name=${images}\""
-
+  docker build --pull -t "${REPO_NAME}/${1}:${2}" -f "${1}/${2}/Dockerfile" "${1}/${2}"
+  
   if [[ "${BRANCH_NAME:-none}" = "master" ]]; then
-    output="${output},push=true"
-    cacheTo="--cache-to=type=registry,ref=${REPO_NAME}/${1}:${2}-buildcache,mode=max"
-  else
-    output="${output},push=false"
-    cacheTo="--cache-to=type=registry,ref=${REPO_NAME}/${1}:${BRANCH_NAME:-none}-buildcache,mode=max"
+    docker push "${REPO_NAME}/${1}:${2}"
+    if [[ "${3:-}" == "latest" ]]; then
+      docker tag "${REPO_NAME}/${1}:${2}" "${REPO_NAME}/${1}:latest"
+      docker push "${REPO_NAME}/${1}:latest"
+    fi
   fi
-  docker buildx build --output="${output}" "${cacheFrom}" "${cacheTo}" -f "${1}/${2}/Dockerfile" "${1}/${2}"
+  
 }
