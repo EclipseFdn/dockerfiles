@@ -1,7 +1,9 @@
 @Library('common-shared') _
 
 pipeline {
-  agent any
+  agent {
+    label 'docker-build'
+  }
 
   environment {
     REPO_NAME = 'eclipsefdn'
@@ -18,9 +20,6 @@ pipeline {
 
   stages {
     stage('Build docker images') {
-      agent {
-        label 'docker-build'
-      }
       steps {
         withDockerRegistry([credentialsId: '04264967-fea0-40c2-bf60-09af5aeba60f', url: 'https://index.docker.io/v1/']) {
           sh '''
