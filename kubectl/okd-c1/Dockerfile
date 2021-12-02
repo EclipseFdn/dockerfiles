@@ -1,6 +1,6 @@
-FROM alpine as tool_downloader
+FROM alpine:latest as tool_downloader
 
-ARG K8S_VERSION=v1.19.2
+ARG K8S_VERSION=v1.20.13
 ARG JSONNET_VERSION=0.17.0
 
 RUN apk add --no-cache \
@@ -13,7 +13,7 @@ RUN curl -sSLO https://github.com/google/go-jsonnet/releases/download/v${JSONNET
   && tar zxf go-jsonnet_${JSONNET_VERSION}_Linux_x86_64.tar.gz \
   && chmod ug+x jsonnet*
 
-FROM eclipsecbi/alpine
+FROM alpine:latest
 
 RUN apk add --no-cache \
   bash \
