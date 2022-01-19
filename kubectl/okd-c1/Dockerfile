@@ -1,7 +1,7 @@
 FROM alpine:latest as tool_downloader
 
-ARG K8S_VERSION=v1.20.13
-ARG JSONNET_VERSION=0.17.0
+ARG K8S_VERSION=v1.20.14
+ARG JSONNET_VERSION=0.18.0
 
 RUN apk add --no-cache \
   curl
