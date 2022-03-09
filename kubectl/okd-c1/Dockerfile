@@ -22,7 +22,8 @@ FROM alpine:latest
 RUN apk add --no-cache \
   bash \
   git \
-  jq
+  jq \
+  yq
 
 ENV HOME=/home/default
 WORKDIR ${HOME}
