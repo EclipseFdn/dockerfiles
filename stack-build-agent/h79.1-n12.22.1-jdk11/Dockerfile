@@ -19,6 +19,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositor
     && apk add --no-cache \
     make \
     "nodejs<13.0.0" \
+    "npm=12.22.10-r0" \
     "hugo>0.76.5" \
     openjdk11-jdk \
     maven \
