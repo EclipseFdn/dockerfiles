@@ -23,7 +23,8 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositor
     "hugo>0.76.5" \
     openjdk11-jdk \
     maven \
-    yarn
+    yarn \
+    bash
 
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 ENV PATH=$PATH:/usr/lib/jvm/java-11-openjdk/bin
