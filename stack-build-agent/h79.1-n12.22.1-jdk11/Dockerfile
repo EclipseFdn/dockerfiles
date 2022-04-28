@@ -24,6 +24,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositor
     openjdk11-jdk \
     maven \
     yarn \
+    curl \
     bash
 
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
