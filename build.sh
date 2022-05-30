@@ -24,6 +24,7 @@ build planet-venus debian-10-slim latest
 build kubectl okd-c1 latest
 
 build hugo-node h0.62.2-n10.15.0
+build hugo-node h0.99.1-n16.15.0
 build hugo-node h0.76.5-n12.22.1 latest
 
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
