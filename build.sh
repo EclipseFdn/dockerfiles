@@ -16,17 +16,17 @@ SCRIPT_FOLDER="$(dirname "$(readlink -f "${0}")")"
 
 . "${SCRIPT_FOLDER}/build_init.sh"
 
-build nginx stable-alpine latest
-build nginx stable-alpine-for-staging
+# build nginx stable-alpine latest
+# build nginx stable-alpine-for-staging
 
-build planet-venus debian-10-slim latest
+# build planet-venus debian-10-slim latest
 
-build kubectl okd-c1 latest
+build kubectl okd-c1-1.24.2
 
-build hugo-node h0.62.2-n10.15.0
-build hugo-node h0.99.1-n16.15.0
-build hugo-node h0.76.5-n12.22.1 latest
+# build hugo-node h0.62.2-n10.15.0
+# build hugo-node h0.99.1-n16.15.0
+# build hugo-node h0.76.5-n12.22.1 latest
 
-build stack-build-agent h79.1-n12.22.1-jdk11 latest
+# build stack-build-agent h79.1-n12.22.1-jdk11 latest
 
-build containertools alpine-latest latest
+# build containertools alpine-latest latest

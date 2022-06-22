@@ -17,12 +17,12 @@ REPO_NAME="${REPO_NAME:-docker.io/eclipsefdn}"
 build() {
   docker build --pull -t "${REPO_NAME}/${1}:${2}" -f "${1}/${2}/Dockerfile" "${1}/${2}"
 
-  if [[ "${BRANCH_NAME:-none}" = "master" ]]; then
+  #if [[ "${BRANCH_NAME:-none}" = "master" ]]; then
     docker push "${REPO_NAME}/${1}:${2}"
     if [[ "${3:-}" == "latest" ]]; then
       docker tag "${REPO_NAME}/${1}:${2}" "${REPO_NAME}/${1}:latest"
       docker push "${REPO_NAME}/${1}:latest"
     fi
-  fi
+  #fi
 
 }
