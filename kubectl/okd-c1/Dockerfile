@@ -21,6 +21,7 @@ FROM alpine:latest
 
 RUN apk add --no-cache \
   bash \
+  coreutils \
   git \
   jq \
   yq
