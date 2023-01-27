@@ -17,7 +17,7 @@ RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/v18.13.0/node-v18.13.0-
     && npm install -g yarn@1.22.19 \
     && ln -s /usr/local/lib/nodejs/node-v18.13.0-linux-x64/bin/yarn /usr/bin/yarn
 
-RUN curl -L -o /tmp/hugo.deb "https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_0.104.3_linux-amd64.deb" \
+RUN curl -L -o /tmp/hugo.deb "https://github.com/gohugoio/hugo/releases/download/v0.110.0/hugo_0.110.0_linux-amd64.deb" \
     && dpkg -i /tmp/hugo.deb \
     && rm -f /tmp/hugo.deb
 
