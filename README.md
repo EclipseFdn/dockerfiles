@@ -10,3 +10,5 @@ This is a list of base images that are used to run applications on the Eclipse F
   * https://cloud.google.com/solutions/best-practices-for-building-containers
 * Handle OpenShift specifics
   * Support Arbitrary User IDs (https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#use-uid)
+
+TEST - DO NOT MERGE
