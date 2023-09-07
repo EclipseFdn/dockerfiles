@@ -1,6 +1,6 @@
 # Base Image
-ARG DRUPAL_IMAGE_TAG=9.5.10-apache
-FROM drupal:${DRUPAL_IMAGE_TAG}
+ARG DRUPAL_VERSION=9.5.10
+FROM drupal:${DRUPAL_VERSION}-apache
 
 # Set default environment variables
 ARG PHP_ENV=production
