@@ -29,6 +29,6 @@ build hugo-node h0.110.0-n18.13.0
 build hugo-node h0.76.5-n12.22.1 latest
 
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
-build stack-build-agent h111.3-n18.16-jdk11
+build stack-build-agent h111.3-n18.17-jdk11
 
 build containertools alpine-latest latest
