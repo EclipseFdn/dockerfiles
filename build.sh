@@ -28,6 +28,8 @@ build hugo-node h0.99.1-n16.15.0
 build hugo-node h0.110.0-n18.13.0
 build hugo-node h0.76.5-n12.22.1 latest
 
+build drupal-node d9.5.10-n18.17.1 latest
+
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
 build stack-build-agent h111.3-n18.17-jdk11
 
