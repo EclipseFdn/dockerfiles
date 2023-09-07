@@ -2,7 +2,7 @@
 ARG DRUPAL_VERSION=9.5.10
 FROM drupal:${DRUPAL_VERSION}-apache
 
-# Set default environment variables
+# Set default build-time variables
 ARG PHP_ENV=production
 ARG NODE_VERSION=v18.17.1
 
