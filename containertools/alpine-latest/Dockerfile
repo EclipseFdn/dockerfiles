@@ -13,7 +13,7 @@ RUN apk add --no-cache \
     unzip \
     wget \
     zip \
-  && curl -sSL https://github.com/moby/buildkit/releases/download/v0.10.6/buildkit-v0.10.6.linux-amd64.tar.gz | tar zxv \
+  && curl -sSL https://github.com/moby/buildkit/releases/download/v0.12.2/buildkit-v0.12.2.linux-amd64.tar.gz | tar zxv \
   && mv bin/buildctl /usr/local/bin \
-  && curl -sSL https://github.com/google/go-containerregistry/releases/download/v0.12.1/go-containerregistry_Linux_x86_64.tar.gz | tar zxv \
+  && curl -sSL https://github.com/google/go-containerregistry/releases/download/v0.16.1/go-containerregistry_Linux_x86_64.tar.gz | tar zxv \
   && mv crane /usr/local/bin
