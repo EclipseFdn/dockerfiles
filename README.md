@@ -1,6 +1,6 @@
 # Eclipse Foundation base Docker images
 
-This is a list of base images that are used to run applications on the Eclipse Foundation infrastructure.
+This is a list of base images that are used to run applications and builds on the Eclipse Foundation infrastructure.
 
 ## How to create a new image?
 
