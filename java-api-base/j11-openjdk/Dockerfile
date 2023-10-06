@@ -6,6 +6,7 @@
 FROM registry.access.redhat.com/ubi9/openjdk-11:1.16-1
 ENV LANGUAGE='en_US:en'
 
+USER root
 # Required to patch for CVEs as base image doesn't appear to run patches
 RUN microdnf upgrade -y
 
