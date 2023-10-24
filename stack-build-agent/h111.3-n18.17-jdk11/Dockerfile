@@ -16,9 +16,9 @@ FROM eclipsecbi/alpine:3.18
 
 RUN apk add --no-cache \
     make \
-    "nodejs=18.17.1-r0" \
+    "nodejs=18.18.2-r0" \
     "npm=9.6.6-r0" \
-    "hugo=0.111.3-r4" \
+    "hugo=0.111.3-r5" \
     "yarn=1.22.19-r0" \
     openjdk11-jdk \
     maven \
