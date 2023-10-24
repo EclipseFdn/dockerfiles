@@ -3,7 +3,7 @@
 #
 # Based on the image provided by Quarkus in quickstarts with some modifications
 ####
-FROM registry.access.redhat.com/ubi9/openjdk-11:1.16-3
+FROM registry.access.redhat.com/ubi9/openjdk-17:1.16-3
 ENV LANGUAGE='en_US:en'
 
 USER root

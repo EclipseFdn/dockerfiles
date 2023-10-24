@@ -32,7 +32,9 @@ build drupal-node d9.5.10-n18.17.1 latest
 
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
 build stack-build-agent h111.3-n18.17-jdk11
+build stack-build-agent h111.3-n18.17-jdk17
 
 build java-api-base j11-openjdk latest
+build java-api-base j17-openjdk
 
 build containertools alpine-latest latest
