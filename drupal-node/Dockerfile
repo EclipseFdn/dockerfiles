@@ -4,6 +4,7 @@ FROM drupal:${DRUPAL_VERSION}-apache
 
 # Set default build-time variables
 ARG NODE_VERSION=v18.17.1
+ARG NPM_VERSION=10.2.3
 
 # Install necessary packages and PHP extensions
 RUN apt update && apt install -y libldap2-dev git mariadb-client vim rsync \
@@ -20,6 +21,7 @@ RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${
   && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/node /usr/bin/node \
   && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/npm /usr/bin/npm \
   && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/npx /usr/bin/npx \
+  && npm install -g npm@${NPM_VERSION} \
   && npm install -g yarn \
   && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/yarn /usr/bin/yarn
 
