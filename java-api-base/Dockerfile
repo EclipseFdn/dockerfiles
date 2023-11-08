@@ -3,7 +3,8 @@
 #
 # Based on the image provided by Quarkus in quickstarts with some modifications
 ####
-FROM registry.access.redhat.com/ubi9/openjdk-17:1.16-3
+ARG JDK_VERSION=11:1.16-3
+FROM registry.access.redhat.com/ubi9/openjdk-${JDK_VERSION}
 ENV LANGUAGE='en_US:en'
 
 USER root
