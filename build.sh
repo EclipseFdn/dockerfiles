@@ -29,6 +29,8 @@ build hugo-node h0.110.0-n18.13.0
 build hugo-node h0.76.5-n12.22.1 latest
 
 build drupal-node d9.5.10-n18.17.1 latest
+# build_arg <image_name> <tag> [build-args] [latest]
+build_arg drupal-node d9.5.10-n18.18.2 "--build-arg DRUPAL_VERSION=9.5.10 --build-arg NODE_VERSION=v18.18.2"
 
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
 build stack-build-agent h111.3-n18.17-jdk11
