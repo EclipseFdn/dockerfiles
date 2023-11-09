@@ -39,7 +39,7 @@ build_arg() {
   fi
 
   if [[ "${BRANCH_NAME:-none}" == "master" ]]; then
-    docker push "${REPO_NAME}/${image_name}/${tag}"
+    docker push "${REPO_NAME}/${image_name}:${tag}"
     if [[ "${latest}" == "latest" ]]; then
       docker tag "${REPO_NAME}/${image_name}:${tag}" "${REPO_NAME}/${image_name}:latest"
       docker push "${REPO_NAME}/${image_name}:latest"
