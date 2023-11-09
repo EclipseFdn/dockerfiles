@@ -28,7 +28,7 @@ build kubectl okd-c1 latest
 build_arg hugo-node h0.76.5-n12.22.1 "--build-arg HUGO_VERSION=0.76.5 --build-arg NODE_VERSION=v12.22.1" latest
 build_arg hugo-node h0.99.1-n16.15.0 "--build-arg HUGO_VERSION=0.99.1 --build-arg NODE_VERSION=v16.15.0"
 build_arg hugo-node h0.110.0-n18.13.0 "--build-arg HUGO_VERSION=0.110.0 --build-arg NODE_VERSION=v18.13.0"
-build_arg hugo-node h0.120.4-n18.18.2 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.120.4 --build-arg NODE_VERSION=v18.18.2"
+#build_arg hugo-node h0.120.4-n18.18.2 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.120.4 --build-arg NODE_VERSION=v18.18.2"
 
 build_arg drupal-node d9.5.10-n18.18.2 "--build-arg DRUPAL_VERSION=9.5.10 --build-arg NODE_VERSION=v18.18.2" latest
 
