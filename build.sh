@@ -21,7 +21,7 @@ SCRIPT_FOLDER="$(dirname "$(readlink -f "${0}")")"
 build nginx stable-alpine latest
 build nginx stable-alpine-for-staging
 
-build planet-venus debian-10-slim latest
+build_arg planet-venus debian-10-slim "" latest
 
 build kubectl okd-c1 latest
 
