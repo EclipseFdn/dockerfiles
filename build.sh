@@ -33,8 +33,10 @@ build_arg hugo-node h0.120.4-n18.18.2 "--build-arg DEBIAN_VERSION=12-slim --buil
 build_arg drupal-node d9.5.10-n18.18.2 "--build-arg DRUPAL_VERSION=9.5.10 --build-arg NODE_VERSION=v18.18.2" latest
 
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
-build stack-build-agent h111.3-n18.17-jdk11
-build stack-build-agent h111.3-n18.17-jdk17
+build_arg stack-build-agent h111.3-n18.18-jdk17 "--build-arg JDK_VERSION=17"
+#node version in tag is wrong
+build_arg stack-build-agent h111.3-n18.17-jdk11
+build_arg stack-build-agent h111.3-n18.17-jdk17 "--build-arg JDK_VERSION=17"
 
 build_arg java-api-base j11-openjdk "--build-arg JDK_VERSION=11:1.16-3" latest
 build_arg java-api-base j17-openjdk "--build-arg JDK_VERSION=17:1.16-3"
