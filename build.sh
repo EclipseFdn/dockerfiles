@@ -39,4 +39,4 @@ build stack-build-agent h111.3-n18.17-jdk17
 build_arg java-api-base j11-openjdk "--build-arg JDK_VERSION=11:1.16-3" latest
 build_arg java-api-base j17-openjdk "--build-arg JDK_VERSION=17:1.16-3"
 
-build containertools alpine-latest latest
+build_arg containertools alpine-latest "" latest
