@@ -22,7 +22,6 @@ build nginx stable-alpine latest
 build nginx stable-alpine-for-staging
 
 build_arg planet-venus debian-10-slim "" latest
-build_arg planet-venus debian-12-slim "--build-arg DEBIAN_VERSION=12-slim"
 
 build kubectl okd-c1 latest
 
