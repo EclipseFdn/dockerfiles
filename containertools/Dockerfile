@@ -11,6 +11,7 @@ FROM alpine:${ALPINE_VERSION}
 
 ARG BUILDKIT_VERSION=v0.12.2
 ARG GO_CONTAINER_REG_VERSION=v0.16.1
+ARG JSONNET_VERSION=0.20.0
 
 RUN apk add --no-cache \
     bash \
@@ -19,6 +20,7 @@ RUN apk add --no-cache \
     git \
     gnupg \
     jq \
+    jsonnet \
     openssh-client \
     rsync \
     ttf-dejavu \
@@ -28,4 +30,7 @@ RUN apk add --no-cache \
   && curl -sSL https://github.com/moby/buildkit/releases/download/${BUILDKIT_VERSION}/buildkit-${BUILDKIT_VERSION}.linux-amd64.tar.gz | tar zxv \
   && mv bin/buildctl /usr/local/bin \
   && curl -sSL https://github.com/google/go-containerregistry/releases/download/${GO_CONTAINER_REG_VERSION}/go-containerregistry_Linux_x86_64.tar.gz | tar zxv \
-  && mv crane /usr/local/bin
+  && mv crane /usr/local/bin \
+  && curl -sSLO https://github.com/google/go-jsonnet/releases/download/v${JSONNET_VERSION}/go-jsonnet_${JSONNET_VERSION}_Linux_x86_64.tar.gz \
+  && tar zxf go-jsonnet_${JSONNET_VERSION}_Linux_x86_64.tar.gz \
+  && chmod ug+x jsonnet*
