@@ -7,6 +7,7 @@ ARG NODE_VERSION=v18.13.0
 
 RUN apt-get update && apt-get install -y \
     build-essential \
+    golang \
     ca-certificates \
     curl \
     git \
