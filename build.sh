@@ -31,6 +31,7 @@ build_arg hugo-node h0.110.0-n18.13.0 "--build-arg HUGO_VERSION=0.110.0 --build-
 build_arg hugo-node h0.120.4-n18.18.2 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.120.4 --build-arg NODE_VERSION=v18.18.2"
 
 build_arg drupal-node d9.5.10-n18.18.2 "--build-arg DRUPAL_VERSION=9.5.10 --build-arg NODE_VERSION=v18.18.2" latest
+build_arg drupal-node d10.2.2-n18.19.0 "--build-arg DRUPAL_VERSION=10.2.2 --build-arg NODE_VERSION=v18.19.0"
 
 build stack-build-agent h79.1-n12.22.1-jdk11 latest
 build_arg stack-build-agent h111.3-n18.18-jdk17 "--build-arg JDK_VERSION=17"
