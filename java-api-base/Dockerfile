@@ -13,5 +13,7 @@ RUN microdnf upgrade -y
 
 EXPOSE 8080
 
+RUN mkdir /deployments/logs && chown 185:0 /deployments/logs && chmod 775 /deployments/logs
+
 ENV JAVA_OPTS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
 ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
