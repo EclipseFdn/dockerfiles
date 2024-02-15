@@ -61,6 +61,7 @@ pipeline {
         stage('drupal-node') {
           steps { 
             buildImage('drupal-node', 'd9.5.10-n18.18.2', 'drupal-node', ['DRUPAL_VERSION':'9.5.10', 'NODE_VERSION': 'v18.18.2'], true)
+            buildImage('drupal-node', 'd10.2.2-n18.19.0', 'drupal-node', ['DRUPAL_VERSION':'10.2.2', 'NODE_VERSION': 'v18.19.0'])
           }
         }
         
@@ -75,8 +76,8 @@ pipeline {
 
         stage('java-api-base') {
           steps { 
-            buildImage('java-api-base', 'j11-openjdk', 'java-api-base', ['JDK_VERSION':'11:1.16-3'], true)
-            buildImage('java-api-base', 'j17-openjdk', 'java-api-base', ['JDK_VERSION':'17:1.16-3'])
+            buildImage('java-api-base', 'j11-openjdk', 'java-api-base', ['JDK_VERSION':'11:1.17'], true)
+            buildImage('java-api-base', 'j17-openjdk', 'java-api-base', ['JDK_VERSION':'17:1.17'])
           }
         }
 
