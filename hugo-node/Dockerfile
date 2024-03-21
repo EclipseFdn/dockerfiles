@@ -3,7 +3,7 @@ FROM debian:${DEBIAN_VERSION} AS builder
 
 ARG HUGO_VERSION=0.110.0
 ARG HUGO_FILENAME=hugo_extended_${HUGO_VERSION}_linux-amd64.deb
-ARG NODE_VERSION=v18.13.0
+ARG NODE_VERSION=v18.19.1
 
 RUN apt-get update && apt-get install -y \
     build-essential \
