@@ -64,9 +64,9 @@ pipeline {
         stage('stack-build-agent') {
           steps {
             buildImage('stack-build-agent', 'h79.1-n12.22.1-jdk11', 'stack-build-agent/h79.1-n12.22.1-jdk11', [:], true)
-            buildImage('stack-build-agent', 'h111.3-n18.18-jdk17', 'stack-build-agent', ['JDK_VERSION':'17'])
-            buildImage('stack-build-agent', 'h111.3-n18.17-jdk11', 'stack-build-agent')
-            buildImage('stack-build-agent', 'h111.3-n18.17-jdk11', 'stack-build-agent', ['JDK_VERSION':'17'])
+            buildImage('stack-build-agent', 'h111.3-n18.19-jdk17', 'stack-build-agent', ['JDK_VERSION':'17'])
+            buildImage('stack-build-agent', 'h111.3-n18.19-jdk11', 'stack-build-agent')
+            buildImage('stack-build-agent', 'h111.3-n18.19-jdk17', 'stack-build-agent', ['JDK_VERSION':'17'])
           }
         }
 
