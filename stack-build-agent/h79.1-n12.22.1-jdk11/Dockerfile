@@ -12,7 +12,7 @@
 # of fullstack development environments. This includes set and tested minimum
 # versions of node.js, Hugo, and Java.
 ##
-FROM eclipsecbi/alpine:3.13
+FROM alpine:3.13
 
 ## Pull in previous release packages for older LTS Nodejs
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.12/main' >> /etc/apk/repositories \
