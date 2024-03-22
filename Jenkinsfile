@@ -51,6 +51,7 @@ pipeline {
             buildImage('hugo-node', 'h0.99.1-n16.15.0', 'hugo-node', ['HUGO_VERSION':'0.99.1', 'HUGO_FILENAME':'hugo_0.99.1_Linux-64bit.deb','NODE_VERSION': 'v16.15.0'])
             buildImage('hugo-node', 'h0.110.0-n18.19.1', 'hugo-node', ['HUGO_VERSION':'0.110.0', 'NODE_VERSION': 'v18.19.1'])
             buildImage('hugo-node', 'h0.120.4-n18.19.1', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.120.4', 'NODE_VERSION': 'v18.19.1'])
+            buildImage('hugo-node', 'h0.124.1-n20.11.1', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.124.1', 'NODE_VERSION': 'v20.11.1'])
           }
         }
 
