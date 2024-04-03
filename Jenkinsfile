@@ -27,7 +27,7 @@ pipeline {
   stages {
     stage('nginx') {
       steps {
-        buildImage('nginx', 'stable-alpine', 'nginx/stable-alpine-for-staging', [:], true)
+        buildImage('nginx', 'stable-alpine', 'nginx/stable-alpine', [:], true)
         buildImage('nginx', 'stable-alpine-for-staging', 'nginx/stable-alpine-for-staging')
       }
     }
