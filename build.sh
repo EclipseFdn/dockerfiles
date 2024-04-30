@@ -39,6 +39,9 @@ build_arg stack-build-agent h111.3-n18.18-jdk17 "--build-arg JDK_VERSION=17"
 build_arg stack-build-agent h111.3-n18.17-jdk11
 build_arg stack-build-agent h111.3-n18.17-jdk17 "--build-arg JDK_VERSION=17"
 
+## Used for native builds
+build_arg native-build-agent m23-n18.20.2 latest
+
 build_arg java-api-base j11-openjdk "--build-arg JDK_VERSION=11:1.17" latest
 build_arg java-api-base j17-openjdk "--build-arg JDK_VERSION=17:1.17"
 
