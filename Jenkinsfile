@@ -120,6 +120,19 @@ pipeline {
           }
         }
 
+        stage('native-build-agent') {
+          agent {
+            kubernetes {
+              yaml loadOverridableResource(
+                libraryResource: 'org/eclipsefdn/container/agent.yml'
+              )
+            }
+          }
+          steps {
+            buildImage('native-build-agent', 'm23-n18.20.2', 'native-build-agent', [:], true)
+          }
+        }
+
         stage('containertools') {
           agent {
             kubernetes {
