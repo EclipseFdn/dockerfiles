@@ -4,6 +4,7 @@ pipeline {
   agent any 
 
   options {
+    skipDefaultCheckout()
     buildDiscarder(logRotator(numToKeepStr: '5'))
     timeout(time: 90, unit: 'MINUTES')
   }
@@ -19,6 +20,12 @@ pipeline {
   }
 
   stages {
+    stage('Checkout Workspace') {
+      steps {
+        checkout scm
+        stash(name: 'workspace', includes: '**')
+      }
+    }
     stage('Run Builds') {
       parallel {
         stage('nginx') {
@@ -86,13 +93,6 @@ pipeline {
         }
 
         stage('aws') {
-          agent {
-            kubernetes {
-              yaml loadOverridableResource(
-                libraryResource: 'org/eclipsefdn/container/agent.yml'
-              )
-            }
-          }
           steps {
             buildImage('aws', 'alpine-latest', 'aws/alpine-latest', [:], true)
           }
@@ -124,6 +124,7 @@ def buildImage(String name, String version, String context, Map<String, String> 
   podTemplate(yaml: loadOverridableResource(libraryResource: 'org/eclipsefdn/container/agent.yml')) {
     node(POD_LABEL) {
       container('containertools') {
+        unstash('workspace')
         containerBuild(
           credentialsId: env.CREDENTIALS_ID,
           name: env.NAMESPACE + '/' + name,
