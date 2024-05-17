@@ -20,6 +20,7 @@ ARG NPM_VERSION=9.6.6-r0
 ARG HUGO_VERSION=0.111.3-r6
 ARG YARN_VERSION=1.22.19-r0
 ARG JDK_VERSION=11
+ARG SONAR_SCANNER_VERSION=5.0.1.3006
 
 RUN apk add --no-cache \
     make \
@@ -31,6 +32,13 @@ RUN apk add --no-cache \
     maven \
     curl \
     bash
+
+## Add sonar scanner for easier scanning of non-Java projects w/o having to rely on Jenkins
+## Note: Will require SONAR_USER_HOME to be set to use
+RUN curl -L -o /tmp/sonarscanner.zip "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip" \
+    && mkdir /usr/local/lib/sonarscanner \
+    && unzip /tmp/sonarscanner.zip -d /usr/local/lib/sonarscanner \
+    && ln -s /usr/local/lib/sonarscanner/sonar-scanner-${SONAR_SCANNER_VERSION}/bin/sonar-scanner /usr/bin/sonar-scanner
 
 ENV JAVA_HOME="/usr/lib/jvm/java-${JDK_VERSION}-openjdk"
 ENV PATH=$PATH:/usr/lib/jvm/java-${JDK_VERSION}-openjdk/bin
