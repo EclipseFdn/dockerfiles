@@ -103,6 +103,7 @@ pipeline {
             buildImage('stack-build-agent', 'h111.3-n18.19-jdk17', 'stack-build-agent', ['JDK_VERSION':'17'])
             buildImage('stack-build-agent', 'h111.3-n18.19-jdk11', 'stack-build-agent')
             buildImage('stack-build-agent', 'h111.3-n18.19-jdk17', 'stack-build-agent', ['JDK_VERSION':'17'])
+            buildImage('stack-build-agent', 'a3.19-h120-n20-jdk17', 'stack-build-agent', ['ALPINE_VERSION':'3.19', 'JDK_VERSION':'17', 'NODE_VERSION':'20.12.1-r0', 'NPM_VERSION':'10.2.5-r0', 'HUGO_VERSION':'0.120.4-r3', 'YARN_VERSION':'1.22.19-r0'])
           }
         }
 
