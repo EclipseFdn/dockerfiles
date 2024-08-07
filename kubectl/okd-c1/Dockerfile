@@ -21,7 +21,7 @@ RUN curl -sSLO https://github.com/jsonnet-bundler/jsonnet-bundler/releases/downl
   && chmod ug+x jb-linux-amd64
 
 RUN curl -sSLO "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
-  && tar zxf helm-${HELM_VERSION}-linux-arm64.tar.gz \
+  && tar zxf helm-${HELM_VERSION}-linux-amd64.tar.gz \
   && chmod ug+x helm
 
 FROM alpine:latest
