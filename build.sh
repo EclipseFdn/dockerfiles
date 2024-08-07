@@ -25,20 +25,18 @@ build_arg planet-venus debian-10-slim "" latest
 
 build kubectl okd-c1 latest
 
-build_arg hugo-node h0.76.5-n12.22.1 "--build-arg HUGO_VERSION=0.76.5 --build-arg HUGO_FILENAME=hugo_0.76.5_Linux-64bit.deb --build-arg NODE_VERSION=v12.22.1" latest
 build_arg hugo-node h0.99.1-n16.15.0 "--build-arg HUGO_VERSION=0.99.1 --build-arg HUGO_FILENAME=hugo_0.99.1_Linux-64bit.deb --build-arg NODE_VERSION=v16.15.0"
-build_arg hugo-node h0.110.0-n18.13.0 "--build-arg HUGO_VERSION=0.110.0 --build-arg NODE_VERSION=v18.13.0"
-build_arg hugo-node h0.120.4-n18.18.2 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.120.4 --build-arg NODE_VERSION=v18.18.2"
+build_arg hugo-node h0.110.0-n18.19.1 "--build-arg HUGO_VERSION=0.110.0 --build-arg NODE_VERSION=v18.19.1" latest
+build_arg hugo-node h0.120.4-n18.19.1 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.120.4 --build-arg NODE_VERSION=v18.19.1"
+build_arg hugo-node h0.124.1-n20.11.1 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.124.1 --build-arg NODE_VERSION=v20.11.1"
 
-build_arg drupal-node d9.5.10-n18.18.2 "--build-arg DRUPAL_VERSION=9.5.10 --build-arg NODE_VERSION=v18.18.2" latest
-build_arg drupal-node d10.2.2-n18.19.0 "--build-arg DRUPAL_VERSION=10.2.2 --build-arg NODE_VERSION=v18.19.0"
+build_arg drupal-node d9.5.10-n18.18.2 "--build-arg DRUPAL_VERSION=9.5.10 --build-arg NODE_VERSION=v18.18.2"
+build_arg drupal-node d10.2.2-n18.19.0 "--build-arg DRUPAL_VERSION=10.2.2 --build-arg NODE_VERSION=v18.19.0" latest
 
-build stack-build-agent h79.1-n12.22.1-jdk11 latest
-build_arg stack-build-agent h111.3-n18.18-jdk17 "--build-arg JDK_VERSION=17"
 #node version in tag is wrong
-build_arg stack-build-agent h111.3-n18.17-jdk11
+build_arg stack-build-agent h111.3-n18.17-jdk11 latest
 build_arg stack-build-agent h111.3-n18.17-jdk17 "--build-arg JDK_VERSION=17"
-build_arg stack-build-agent a3.19-h120-n20-jdk17 "--build-arg ALPINE_VERSION=3.19 --build-arg JDK_VERSION=17 --build-arg NODE_VERSION=20.12.1-r0 --build-arg NPM_VERSION=10.2.5-r0 --build-arg HUGO_VERSION=0.120.4-r3 --build-arg YARN_VERSION=1.22.19-r0"
+build_arg stack-build-agent a3.19-h120-n20-jdk17 "--build-arg ALPINE_VERSION=3.19 --build-arg JDK_VERSION=17 --build-arg NODE_VERSION=20.15.1-r0 --build-arg NPM_VERSION=10.2.5-r0 --build-arg HUGO_VERSION=0.120.4-r3 --build-arg YARN_VERSION=1.22.19-r0"
 
 ## Used for native builds
 build_arg native-build-agent m23-n18.20.2 latest
