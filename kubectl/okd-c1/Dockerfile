@@ -21,7 +21,7 @@ RUN curl -sSLO https://github.com/jsonnet-bundler/jsonnet-bundler/releases/downl
   && chmod ug+x jb-linux-amd64
 
 RUN curl -sSLO "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
-  && tar zxf helm-${HELM_VERSION}-linux-amd64.tar.gz \
+  && tar zxf helm-${HELM_VERSION}-linux-amd64.tar.gz --strip-components=1 \
   && chmod ug+x helm
 
 FROM alpine:latest
@@ -40,4 +40,5 @@ WORKDIR ${HOME}
 COPY --from=tool_downloader kubectl /usr/local/bin/kubectl
 COPY --from=tool_downloader oc /usr/local/bin/oc
 COPY --from=tool_downloader jsonnet /usr/local/bin/jsonnet
+COPY --from=tool_downloader helm /usr/local/bin/helm
 COPY --from=tool_downloader jb-linux-amd64 /usr/local/bin/jb
