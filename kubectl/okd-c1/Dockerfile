@@ -1,8 +1,9 @@
 FROM alpine:latest as tool_downloader
 
-ARG OCP_VERSION=4.13.0
+ARG OCP_VERSION=4.14.0
 ARG JSONNET_VERSION=0.20.0
 ARG JSONNET_BUNDLER_VERSION=v0.5.1
+ARG HELM_VERSION=v3.15.3
 
 RUN apk add --no-cache \
   curl
@@ -18,6 +19,10 @@ RUN curl -sSLO https://github.com/google/go-jsonnet/releases/download/v${JSONNET
 
 RUN curl -sSLO https://github.com/jsonnet-bundler/jsonnet-bundler/releases/download/${JSONNET_BUNDLER_VERSION}/jb-linux-amd64 \
   && chmod ug+x jb-linux-amd64
+
+RUN curl -sSLO "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" \
+  && tar zxf helm-${HELM_VERSION}-linux-arm64.tar.gz \
+  && chmod ug+x helm
 
 FROM alpine:latest
 
