@@ -1,10 +1,10 @@
 # Base Image
-ARG DRUPAL_VERSION=9.5.10
+ARG DRUPAL_VERSION=10.3.13
 FROM drupal:${DRUPAL_VERSION}-apache
 
 # Set default build-time variables
-ARG NODE_VERSION=v18.17.1
-ARG NPM_VERSION=10.2.3
+ARG NODE_VERSION=v22.14.0
+ARG NPM_VERSION=11.1.0
 
 # Install necessary packages and PHP extensions
 RUN apt update && apt install -y libldap2-dev git mariadb-client vim rsync \
