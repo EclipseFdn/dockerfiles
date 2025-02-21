@@ -86,8 +86,8 @@ pipeline {
             }
           }
           steps {
-            buildImage('drupal-node', 'd10.3.13-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'10.3.13', 'NODE_VERSION': 'v22.14.0'], true)
-            buildImage('drupal-node', 'd11.1.3-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'11.1.3', 'NODE_VERSION': 'v22.14.0'])
+            buildImage('drupal-node', 'd10.3.12-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'10.3.12', 'NODE_VERSION': 'v22.14.0'], true)
+            buildImage('drupal-node', 'd11.1.2-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'11.1.2', 'NODE_VERSION': 'v22.14.0'])
           }
         }
 
