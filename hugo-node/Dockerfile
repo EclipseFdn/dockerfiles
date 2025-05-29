@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     git \
+    ruby \
+    bundler \
     --no-install-recommends
 
 RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" \
@@ -26,5 +28,3 @@ RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${
 RUN curl -L -o /tmp/hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_FILENAME}" \
     && dpkg -i /tmp/hugo.deb \
     && rm -f /tmp/hugo.deb
-
-
