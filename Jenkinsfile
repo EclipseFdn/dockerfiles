@@ -102,8 +102,8 @@ pipeline {
           steps {
             buildImage('stack-build-agent', 'h111.3-n18.19-jdk11', 'stack-build-agent', [:], true)
             buildImage('stack-build-agent', 'h111.3-n18.19-jdk17', 'stack-build-agent', ['JDK_VERSION':'17'])
-            buildImage('stack-build-agent', 'a3.19-h120-n20-jdk17', 'stack-build-agent', ['ALPINE_VERSION':'3.19', 'JDK_VERSION':'17', 'NODE_VERSION':'20.15.1-r0', 'NPM_VERSION':'10.2.5-r0', 'HUGO_VERSION':'0.120.4-r3', 'YARN_VERSION':'1.22.19-r0'])
-            buildImage('stack-build-agent', 'a3.22-h120-n22-jdk21', 'stack-build-agent', ['ALPINE_VERSION':'3.22', 'JDK_VERSION':'21', 'NODE_VERSION':'22.16.0-r2', 'NPM_VERSION':'11.3.0-r0', 'HUGO_VERSION':'0.120.4-r3', 'YARN_VERSION':'1.22.22-r1'])
+            buildImage('stack-build-agent', 'a3.19-h120-n20-jdk17', 'stack-build-agent', ['ALPINE_VERSION':'3.19', 'JDK_VERSION':'17', 'NODE_VERSION':'20.15.1-r0', 'NPM_VERSION':'10.2.5-r0', 'HUGO_VERSION':'0.120.4', 'YARN_VERSION':'1.22.19-r0'])
+            buildImage('stack-build-agent', 'a3.22-h144-n22-jdk21', 'stack-build-agent', ['ALPINE_VERSION':'3.22', 'JDK_VERSION':'21', 'NODE_VERSION':'22.16.0-r2', 'NPM_VERSION':'11.3.0-r0', 'HUGO_VERSION':'0.144.2', 'YARN_VERSION':'1.22.22-r1'])
           }
         }
 
