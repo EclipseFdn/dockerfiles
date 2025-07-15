@@ -44,7 +44,7 @@ pipeline {
             }
           }
           steps {
-            buildImage('planet-venus', 'debian-10-slim', 'planet-venus', [:], true)
+            buildImage('planet-venus', 'debian-11-slim', 'planet-venus', [:], true)
           }
         }
         stage('kubectl') {
