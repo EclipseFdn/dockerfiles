@@ -5,7 +5,7 @@
 # which is available at http://www.eclipse.org/legal/epl-v20.html
 # SPDX-License-Identifier: EPL-2.0
 #*******************************************************************************
-ARG DEBIAN_VERSION=10-slim
+ARG DEBIAN_VERSION=11-slim
 FROM debian:${DEBIAN_VERSION}
 
 ARG REFRESH_FREQUENCY_SECONDS=1200
