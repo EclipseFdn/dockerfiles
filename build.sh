@@ -45,6 +45,7 @@ build_arg native-build-agent m23-n18.20.2 "" latest
 build_arg native-build-agent m23-n22 "--build-arg NODE_VERSION=v22.17.0"
 
 build_arg java-api-base j11-openjdk "--build-arg JDK_VERSION=11:1.17" latest
-build_arg java-api-base j17-openjdk "--build-arg JDK_VERSION=17:1.17"
+build_arg java-api-base j17-openjdk "--build-arg JDK_VERSION=17:1.22-1.1752621170"
+build_arg java-api-base j21-openjdk "--build-arg JDK_VERSION=21:1.22-1.1752676422"
 
 build_arg containertools alpine-latest "" latest
