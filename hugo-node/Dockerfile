@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     git \
-    asciidoc \
+    asciidoctor \
     --no-install-recommends
 
 RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" \
