@@ -13,18 +13,16 @@
 # compilation for Quarkus.
 ##
 
-ARG MANDREL_VERSION=23.0
-FROM registry.access.redhat.com/quarkus/mandrel-23-rhel8:${MANDREL_VERSION}
+ARG JAVA_VERSION=21
+FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-${JAVA_VERSION}
 
-ARG NODE_VERSION=v18.20.2
-ARG NPM_VERSION=9.6.6
-ARG YARN_VERSION=1.22.19
+ARG NODE_VERSION=v22.14.0
 ARG MVN_VERSION=3.9.11
 
 USER root
 
 ## Required as RHEL UBI doesn't come with xz-utils or make ootb
-RUN dnf install -y xz make
+RUN microdnf install -y xz make
 
 ## Add node/yarn as it's used as part of the Java build process to build JSON schemas from API specs
 RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" \
@@ -34,7 +32,7 @@ RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${
     && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/node /usr/bin/node \
     && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/npm /usr/bin/npm \
     && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/npx /usr/bin/npx \
-    && npm install -g yarn@${YARN_VERSION} \
+    && npm install -g yarn \
     && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/yarn /usr/bin/yarn
     
 ## Add maven, as RHEL version is too old to use quarkus extensions (need 3.6+, RHEL provides 3.5.4)
