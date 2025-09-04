@@ -38,7 +38,7 @@ build_arg drupal-node d11.1.3-n22.14.0 "--build-arg DRUPAL_VERSION=11.1.3 --buil
 build_arg stack-build-agent h111.3-n18.17-jdk11 "" latest
 build_arg stack-build-agent h111.3-n18.17-jdk17 "--build-arg JDK_VERSION=17"
 build_arg stack-build-agent a3.19-h120-n20-jdk17 "--build-arg ALPINE_VERSION=3.19 --build-arg JDK_VERSION=17 --build-arg NODE_VERSION=20.15.1-r0 --build-arg NPM_VERSION=10.2.5-r0 --build-arg HUGO_VERSION=0.120.4 --build-arg YARN_VERSION=1.22.19-r0"
-build_arg stack-build-agent a3.22-h144-n22-jdk21 "--build-arg ALPINE_VERSION=3.22 --build-arg JDK_VERSION=21 --build-arg NODE_VERSION=22.16.0-r2 --build-arg NPM_VERSION=11.3.0-r0 --build-arg HUGO_VERSION=0.144.2 --build-arg YARN_VERSION=1.22.22-r1"
+build_arg stack-build-agent a3.22-h144-n22-jdk21 "--build-arg ALPINE_VERSION=3.22 --build-arg JDK_VERSION=21 --build-arg NODE_VERSION=22.16.0-r2 --build-arg NPM_VERSION=11.3.0-r1 --build-arg HUGO_VERSION=0.144.2 --build-arg YARN_VERSION=1.22.22-r1"
 
 ## Used for native builds
 build_arg native-build-agent jdk21-n22 "--build-arg NODE_VERSION=v22.17.0" latest
