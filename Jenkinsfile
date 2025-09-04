@@ -131,8 +131,7 @@ pipeline {
             }
           }
           steps {
-            buildImage('native-build-agent', 'm23-n18.20.2', 'native-build-agent', [:], true)
-            buildImage('native-build-agent', 'm23-n22', 'native-build-agent', ['NODE_VERSION':'v22.17.0'])
+            buildImage('native-build-agent', 'jdk21-n22', 'native-build-agent', ['NODE_VERSION':'v22.17.0'], true)
           }
         }
 
