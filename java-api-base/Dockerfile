@@ -8,8 +8,8 @@ FROM registry.access.redhat.com/ubi9/openjdk-${JDK_VERSION}
 ENV LANGUAGE='en_US:en'
 
 USER root
-# Required to patch for CVEs as base image doesn't appear to run patches
-RUN microdnf upgrade -y
+# Install for debugging tools
+RUN microdnf update -y && microdnf install -y procps
 
 EXPOSE 8080
 
