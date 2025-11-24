@@ -117,8 +117,9 @@ pipeline {
           }
           steps {
             buildImage('java-api-base', 'j11-openjdk', 'java-api-base', ['JDK_VERSION':'11:1.17'])
-            buildImage('java-api-base', 'j17-openjdk', 'java-api-base', ['JDK_VERSION':'17:1.22-1.1752621170'], true)
-            buildImage('java-api-base', 'j21-openjdk', 'java-api-base', ['JDK_VERSION':'21:1.22-1.1752676422'])
+            buildImage('java-api-base', 'j17-openjdk', 'java-api-base', ['JDK_VERSION':'17:1.22-1.1752621170'])
+            buildImage('java-api-base', 'j21-openjdk', 'java-api-base', ['JDK_VERSION':'21:1.22-1.1752676422'], true)
+            buildImage('java-api-base', 'j21-openjdk-runtime', 'java-api-base', ['JDK_VERSION':'21-runtime:1.23'])
           }
         }
 
