@@ -147,6 +147,19 @@ pipeline {
             buildImage('containertools', 'alpine-latest', 'containertools', [:], true)
           }
         }
+
+        stage('aws') {
+          agent {
+            kubernetes {
+              yaml loadOverridableResource(
+                libraryResource: 'org/eclipsefdn/container/agent.yml'
+              )
+            }
+          }
+          steps {
+            buildImage('aws', 'alpine-latest', 'aws/alpine-latest', [:], true)
+          }
+        }
       }
     }
   }
