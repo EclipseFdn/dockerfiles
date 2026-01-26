@@ -25,6 +25,8 @@ build_arg planet-venus debian-10-slim "" latest
 
 build kubectl okd-c1 latest
 
+build aws alpine-latest latest
+
 build_arg hugo-node h0.99.1-n16.15.0 "--build-arg HUGO_VERSION=0.99.1 --build-arg HUGO_FILENAME=hugo_0.99.1_Linux-64bit.deb --build-arg NODE_VERSION=v16.15.0"
 build_arg hugo-node h0.110.0-n18.19.1 "--build-arg HUGO_VERSION=0.110.0 --build-arg NODE_VERSION=v18.19.1" latest
 build_arg hugo-node h0.120.4-n18.19.1 "--build-arg DEBIAN_VERSION=12-slim --build-arg HUGO_VERSION=0.120.4 --build-arg NODE_VERSION=v18.19.1"
