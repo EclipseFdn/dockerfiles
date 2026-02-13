@@ -26,13 +26,20 @@ RUN apk add --no-cache \
     make \
     "nodejs=${NODE_VERSION}" \
     "npm=${NPM_VERSION}" \
-    "yarn=${YARN_VERSION}" \
     openjdk${JDK_VERSION}-jdk \
     maven \
     curl \
     bash \
     libc6-compat \
     libstdc++
+
+RUN if [[ "$YARN_VERSION" =~ "1.*" ]]; then \
+      apk add --no-cache "yarn=${YARN_VERSION}"; \
+    else \
+      npm install -g corepack; \
+      corepack enable; \
+      corepack prepare yarn@${YARN_VERSION} --activate; \
+    fi
 
 ENV JAVA_HOME="/usr/lib/jvm/java-${JDK_VERSION}-openjdk"
 ENV PATH=$PATH:/usr/lib/jvm/java-${JDK_VERSION}-openjdk/bin
@@ -42,4 +49,3 @@ RUN curl -L -o /tmp/hugo.tar.gz "https://github.com/gohugoio/hugo/releases/downl
     && tar -xf "/tmp/hugo.tar.gz" hugo -C /usr/bin
 
 USER 10001:0
-
