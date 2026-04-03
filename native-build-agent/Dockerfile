@@ -17,7 +17,7 @@ ARG JAVA_VERSION=21
 FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-${JAVA_VERSION}
 
 ARG NODE_VERSION=v22.14.0
-ARG MVN_VERSION=3.9.11
+ARG MVN_VERSION=3.9.14
 
 USER root
 
