@@ -4,7 +4,7 @@ This is a list of base images that are used to run applications and builds on th
 
 ## How to create a new image?
 
-* Know the state fo the art / best practices of building container images
+* Know the state of the art / best practices of building container images
   * https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
   * http://www.projectatomic.io/docs/docker-image-author-guidance/
   * https://cloud.google.com/solutions/best-practices-for-building-containers
