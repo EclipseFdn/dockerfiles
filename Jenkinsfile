@@ -112,6 +112,7 @@ pipeline {
 def buildImage(String name, String version, String context, Map<String, String> buildArgs = [:], boolean latest = false) {
   String distroName = "${env.NAMESPACE}/${name}:${version}"
   def containerBuildArgs = buildArgs.collect { k, v -> "--opt build-arg:${k}=${v}" }.join(' ')
+  def pushArg = "${env.BRANCH_NAME}" == 'master'
   
   println """
     "###### Build Image: ${distroName}
@@ -119,6 +120,7 @@ def buildImage(String name, String version, String context, Map<String, String> 
     * Build Params ${buildArgs}
     * Build Args ${containerBuildArgs}
     * Dockerfile ${context}/Dockerfile
+    * Push ${pushArg}
     * Latest ${latest}
     """
   podTemplate(yaml: loadOverridableResource(libraryResource: 'org/eclipsefdn/container/agent.yml')) {
@@ -132,7 +134,7 @@ def buildImage(String name, String version, String context, Map<String, String> 
           dockerfile: context + '/Dockerfile',
           context: context,
           buildArgs: containerBuildArgs,
-          push: env.GIT_BRANCH == 'master',
+          push: pushArg,
           latest: latest,
           debug: false
         )
