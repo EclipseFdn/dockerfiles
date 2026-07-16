@@ -4,6 +4,7 @@ FROM debian:${DEBIAN_VERSION} AS builder
 ARG HUGO_VERSION=0.110.0
 ARG HUGO_FILENAME=hugo_extended_${HUGO_VERSION}_linux-amd64.deb
 ARG NODE_VERSION=v18.19.1
+ARG PLAYWRIGHT_VERSION=1.61.1
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -27,3 +28,8 @@ RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${
 RUN curl -L -o /tmp/hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_FILENAME}" \
     && dpkg -i /tmp/hugo.deb \
     && rm -f /tmp/hugo.deb
+
+RUN npm install -g playwright@${PLAYWRIGHT_VERSION} \
+    && playwright install chromium \
+    && playwright install-deps chromium \
+    && rm -rf /var/lib/apt/lists/*
