@@ -17,7 +17,7 @@ ARG JAVA_VERSION=21
 FROM quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-${JAVA_VERSION}
 
 ARG NODE_VERSION=v22.14.0
-ARG MVN_VERSION=3.9.14
+ARG MVN_VERSION=3.9.16
 
 USER root
 
@@ -34,7 +34,7 @@ RUN curl -L -o /tmp/node.tar.xz "https://nodejs.org/dist/${NODE_VERSION}/node-${
     && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/npx /usr/bin/npx \
     && npm install -g yarn \
     && ln -s /usr/local/lib/nodejs/node-${NODE_VERSION}-linux-x64/bin/yarn /usr/bin/yarn
-    
+
 ## Add maven, as RHEL version is too old to use quarkus extensions (need 3.6+, RHEL provides 3.5.4)
 RUN curl -L -o /tmp/maven.tar.gz "https://dlcdn.apache.org/maven/maven-3/${MVN_VERSION}/binaries/apache-maven-${MVN_VERSION}-bin.tar.gz" \
     && mkdir /usr/local/lib/maven \
