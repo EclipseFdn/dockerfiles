@@ -51,8 +51,8 @@ pipeline {
 
         stage('drupal-node') {
           steps {
-            buildImage('drupal-node', 'd10.6.6-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'10.6.6', 'NODE_VERSION': 'v22.14.0'], true)
-            buildImage('drupal-node', 'd11.2.10-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'11.2.10', 'NODE_VERSION': 'v22.14.0'])
+            buildImage('drupal-node', 'd10.6.19-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'10.6.19', 'NODE_VERSION': 'v22.14.0'], true)
+            buildImage('drupal-node', 'd11.4.10-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'11.4.10', 'NODE_VERSION': 'v22.14.0'])
           }
         }
 

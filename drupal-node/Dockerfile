@@ -1,5 +1,5 @@
 # Base Image
-ARG DRUPAL_VERSION=10.6.6
+ARG DRUPAL_VERSION=10.6.19
 FROM drupal:${DRUPAL_VERSION}-apache
 
 # Set default build-time variables
