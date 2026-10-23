@@ -46,6 +46,7 @@ pipeline {
             buildImage('hugo-node', 'h0.120.4-n18.19.1', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.120.4', 'NODE_VERSION': 'v18.19.1'])
             buildImage('hugo-node', 'h0.124.1-n20.11.1', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.124.1', 'NODE_VERSION': 'v20.11.1'])
             buildImage('hugo-node', 'h0.144.2-n22.14.0', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.144.2', 'NODE_VERSION': 'v22.14.0'], true)
+            buildImage('hugo-node', 'h0.144.2-n24', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.144.2', 'NODE_VERSION': 'v24.22.1'])
           }
         }
 
@@ -53,6 +54,8 @@ pipeline {
           steps {
             buildImage('drupal-node', 'd10.6.19-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'10.6.19', 'NODE_VERSION': 'v22.14.0'], true)
             buildImage('drupal-node', 'd11.4.10-n22.14.0', 'drupal-node', ['DRUPAL_VERSION':'11.4.10', 'NODE_VERSION': 'v22.14.0'])
+            buildImage('drupal-node', 'd10-php8.4-n24', 'drupal-node', ['DRUPAL_VERSION':'10-php8.4', 'NODE_VERSION': 'v24.22.1', 'NPM_VERSION': '11'])
+            buildImage('drupal-node', 'd11-php8.4-n24', 'drupal-node', ['DRUPAL_VERSION':'11-php8.4', 'NODE_VERSION': 'v24.22.1', 'NPM_VERSION': '11'])
           }
         }
 
