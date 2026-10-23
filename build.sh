@@ -34,7 +34,7 @@ build_arg hugo-node h0.144.2-n24 "--build-arg DEBIAN_VERSION=12-slim --build-arg
 build_arg drupal-node d10.6.19-n22.14.0 "--build-arg DRUPAL_VERSION=10.6.19 --build-arg NODE_VERSION=v22.14.0" latest
 build_arg drupal-node d11.4.10-n22.14.0 "--build-arg DRUPAL_VERSION=11.4.10 --build-arg NODE_VERSION=v22.14.0"
 build_arg drupal-node d10-php8.4-n24 "--build-arg DRUPAL_VERSION=10-php8.4 --build-arg NODE_VERSION=v24.22.1 --build-arg NPM_VERSION=11"
-build_arg drupal-node d11-php8.4-n24 "--build-arg DRUPAL_VERSION=11-php8.4 --build-arg NODE_VERSION=v24.22.1 --build-arg NPM_VERSION=11"
+build_arg drupal-node d11-php8.5-n24 "--build-arg DRUPAL_VERSION=11-php8.5 --build-arg NODE_VERSION=v24.22.1 --build-arg NPM_VERSION=11"
 
 #node version in tag is wrong
 build_arg stack-build-agent h111.3-n18.17-jdk11 "" latest
