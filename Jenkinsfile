@@ -45,8 +45,8 @@ pipeline {
           steps {
             buildImage('hugo-node', 'h0.120.4-n18.19.1', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.120.4', 'NODE_VERSION': 'v18.19.1'])
             buildImage('hugo-node', 'h0.124.1-n20.11.1', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.124.1', 'NODE_VERSION': 'v20.11.1'])
-            buildImage('hugo-node', 'h0.144.2-n22.14.0', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.144.2', 'NODE_VERSION': 'v22.14.0'], true)
-            buildImage('hugo-node', 'h0.144.2-n24', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.144.2', 'NODE_VERSION': 'v24.22.1'])
+            buildImage('hugo-node', 'h0.144.2-n22.14.0', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.144.2', 'NODE_VERSION': 'v22.14.0'])
+            buildImage('hugo-node', 'h0.144.2-n24', 'hugo-node', ['DEBIAN_VERSION':'12-slim', 'HUGO_VERSION':'0.144.2', 'NODE_VERSION': 'v24.22.1'], true)
           }
         }
 
