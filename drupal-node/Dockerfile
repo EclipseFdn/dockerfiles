@@ -1,9 +1,12 @@
+# Build image for Drupal sites: composer (needs git) and yarn run here.
+# Deployed sites run on eclipsefdn/drupal-runtime instead (see README.md).
+
 # Base Image
-ARG DRUPAL_VERSION=10.6.19
+ARG DRUPAL_VERSION=11-php8.5
 FROM drupal:${DRUPAL_VERSION}-apache
 
 # Set default build-time variables
-ARG NODE_VERSION=v22.14.0
+ARG NODE_VERSION=v24.22.1
 ARG NPM_VERSION=11.1.0
 
 # Install necessary packages and PHP extensions
